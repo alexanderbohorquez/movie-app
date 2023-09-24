@@ -1,0 +1,16 @@
+const { getAll, create, getOne, remove, update, setActorsMovies } = require('../controllers/actor.controller');
+const express = require('express');
+
+const actorRouter = express.Router();
+
+actorRouter.route('/')
+    .get(getAll)
+    .post(create);
+
+actorRouter.route('/:id')
+    .get(getOne)
+    .delete(remove)
+    .put(update);
+
+
+module.exports = actorRouter;
