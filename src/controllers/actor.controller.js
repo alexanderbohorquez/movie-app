@@ -36,20 +36,10 @@ const update = catchError(async(req, res) => {
 });
 
 
-const setActorsMovies = catchError(async(req, res) => {
-    const { id } = req.params;
-    const actor = await Actor.findByPk(id);
-    if (!actor) return res.status(404).json({ message: "Actor not found" });
-    await actor.setMovies(req.body);
-    const movies = await actor.getMovies();
-    return res.json(movies);
-})
-
 module.exports = {
     getAll,
     create,
     getOne,
     remove,
-    update,
-    setActorsMovies
+    update
 }
